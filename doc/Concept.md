@@ -23,42 +23,9 @@ AsciiArtify aims to develop a new software product that uses machine learning to
    - <u>Disadvantages</u>: As a relatively newer tool, `K3d` may have a smaller community and documentation compared to `Minikube` and `Kind`. AsciiArtify should consider community support availability when using `K3d`.
 
 ### Demonstration:
-Here is a brief demonstration of deploying a "Hello World" application on Kubernetes using the recommended tool:
+Here is a brief demonstration of deploying a "Hello World" application on Kubernetes using the `k3d` tool selected for POC:
 
-1. Assuming the recommended tool is `Minikube`:
-   - Install and set up `Minikube` according to the [documentation](https://minikube.sigs.k8s.io/docs/start/).
-   - Start `Minikube` and ensure it's running properly.
-   ```
-   minikube start
-   ```
-   - Create a Kubernetes deployment manifest called `hello-world.yaml` for the "Hello World" application.
-   ```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    name: hello-world
-    spec:
-    containers:
-        - name: hello
-        image: nginx
-        ports:
-            - containerPort: 80
-    ```
-   - Apply the deployment manifest to Minikube.
-    ```
-    kubectl apply -f hello-world.yaml
-    ```
-   - Verify that the application pods are running and accessible.
-    ```
-    kubectl get pods
-    ```
-    - Access the deployed application by running the following command:
-    ```
-    minikube service hello-world
-    ```
-    This command will open a web browser or display a URL that you can use to access the running Nginx application.
-
-
+![Image](../.data/demo-1.gif)
 ### Comparative analysis matrix
 
 
@@ -85,10 +52,4 @@ Based on the analysis, the following recommendations can be made for AsciiArtify
 
 Considering the requirements of AsciiArtify's startup and the comparative analysis of the tools, the following recommendations can be made:
 
-For the initial proof of concept (PoC), it is recommended to use `Minikube`. It provides an easy setup for local development and testing, along with additional features for monitoring and managing Kubernetes clusters. While it may have scalability limitations, it should suffice for the early stages of AsciiArtify's project.
-
-As AsciiArtify progresses and requires more flexibility and portability, they can consider transitioning to `Kind`. `Kind` allows for the creation of local Kubernetes clusters using Docker, which offers advantages in terms of flexibility and portability. AsciiArtify should carefully assess if the additional features provided by `Minikube` are essential for their long-term needs.
-
-Alternatively, if AsciiArtify prefers a tool with faster cluster creation and testing capabilities, as well as comprehensive support for monitoring and managing Kubernetes clusters, they can opt for `K3d`. However, they should consider the availability of community support and documentation, given that `K3d` is a relatively newer tool.
-
-It's crucial for AsciiArtify to evaluate their specific requirements, long-term plans, and the trade-offs associated with each tool before making a final decision. Regular reassessment of their needs and the evolving landscape of Kubernetes tools will enable them to make informed choices for their software product development.
+For the initial proof of concept (PoC), it is recommended to use `k3d` if AsciiArtify prefers a tool with faster cluster creation and testing capabilities, as well as comprehensive support for monitoring and managing Kubernetes clusters. However, they should consider the availability of community support and documentation, given that `K3d` is a relatively newer tool.
